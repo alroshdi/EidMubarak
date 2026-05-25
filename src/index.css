@@ -21,6 +21,11 @@ body {
   font-family: var(--font-body);
 }
 
+button,
+[role='button'] {
+  cursor: pointer;
+}
+
 #root {
   min-height: 100svh;
 }

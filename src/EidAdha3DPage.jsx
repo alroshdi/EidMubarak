@@ -136,7 +136,7 @@ export default function EidAdha3DPage() {
         <motion.button
           type="button"
           onClick={togglePlay}
-          className={`rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 px-5 py-3 text-sm font-semibold text-[#0a1628] shadow-[0_4px_24px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628] sm:px-7 sm:py-3.5 ${isRtl ? 'font-arabic-display tracking-normal' : 'tracking-wide'}`}
+          className={`cursor-pointer rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 px-5 py-3 text-sm font-semibold text-[#0a1628] shadow-[0_4px_24px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628] sm:px-7 sm:py-3.5 ${isRtl ? 'font-arabic-display tracking-normal' : 'tracking-wide'}`}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
           aria-label={isPlaying ? t.pause : t.play}
@@ -214,7 +214,7 @@ function LangButton({ children, active, onClick, arabic = false }) {
     <motion.button
       type="button"
       onClick={onClick}
-      className={`px-4 py-3 text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 focus-visible:ring-inset ${arabic ? 'font-arabic-display text-base' : ''} ${
+      className={`cursor-pointer px-4 py-3 text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 focus-visible:ring-inset ${arabic ? 'font-arabic-display text-base' : ''} ${
         active
           ? 'bg-gradient-to-r from-amber-600 to-amber-500 text-[#0a1628]'
           : 'text-amber-100/90 hover:bg-white/10'
