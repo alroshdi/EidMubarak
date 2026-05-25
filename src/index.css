@@ -1,0 +1,37 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+  --font-arabic-display: 'El Messiri', 'Segoe UI', sans-serif;
+  --font-arabic-body: 'Amiri', 'Georgia', serif;
+  --color-gold: #d4af37;
+  --color-gold-light: #f5e6a8;
+  --color-navy: #0a1628;
+  --color-navy-deep: #050d18;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: var(--font-body);
+}
+
+#root {
+  min-height: 100svh;
+}
+
+/* Premium Arabic typography when RTL is active */
+.font-arabic-display {
+  font-family: var(--font-arabic-display);
+  font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+.font-arabic-body {
+  font-family: var(--font-arabic-body);
+  font-feature-settings: 'liga' 1, 'calt' 1;
+}
