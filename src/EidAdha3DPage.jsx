@@ -205,6 +205,15 @@ export default function EidAdha3DPage() {
           aria-hidden
         />
       </main>
+
+      <motion.footer
+        className={`fixed bottom-4 left-0 right-0 z-40 text-center text-xs text-white/40 sm:text-sm ${isRtl ? 'font-arabic-display' : 'font-body'}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+      >
+        Done by Hajer Alroshdi
+      </motion.footer>
     </div>
   )
 }
