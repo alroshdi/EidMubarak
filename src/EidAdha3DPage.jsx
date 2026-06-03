@@ -125,12 +125,13 @@ export default function EidAdha3DPage() {
 
       <audio ref={audioRef} src={TAKBEER_AUDIO} preload="auto" loop />
 
-      {/* Top bar: always top-left, order unchanged in any language */}
-      <motion.div
+      {/* Top bar: centered for both English and Arabic */}
+      <motion.nav
         dir="ltr"
-        className="fixed top-4 left-4 z-50 flex flex-row flex-wrap items-center gap-2 sm:top-6 sm:left-6 sm:gap-3"
-        initial={{ opacity: 0, x: -16 }}
-        animate={{ opacity: 1, x: 0 }}
+        aria-label={lang === 'ar' ? 'التنقل' : 'Navigation'}
+        className="fixed top-4 left-1/2 z-50 flex w-[min(100%,24rem)] -translate-x-1/2 flex-row flex-wrap items-center justify-center gap-2 px-4 sm:top-6 sm:gap-3"
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
         <motion.button
@@ -145,7 +146,7 @@ export default function EidAdha3DPage() {
         </motion.button>
 
         <div
-          className="flex overflow-hidden rounded-xl border border-amber-400/40 bg-white/5 shadow-[0_4px_20px_rgba(0,0,0,0.3)] backdrop-blur-md"
+          className="flex overflow-hidden rounded-xl border border-amber-400/40 shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
           role="group"
           aria-label="Language"
         >
@@ -156,20 +157,20 @@ export default function EidAdha3DPage() {
             عربي
           </LangButton>
         </div>
-      </motion.div>
+      </motion.nav>
 
       <main
         className={`relative z-30 flex min-h-svh flex-col items-center justify-center px-4 py-16 sm:px-6 md:px-8 ${isRtl ? 'font-arabic-body' : ''}`}
       >
         <motion.header
-          className="mb-6 text-center sm:mb-8"
+          className="mb-6 flex w-full max-w-3xl flex-col items-center text-center sm:mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           key={lang}
         >
           <motion.p
-            className={`mb-2 text-xs text-amber-300/80 sm:text-sm ${isRtl ? 'font-arabic-display text-base font-medium tracking-normal sm:text-lg' : 'font-body uppercase tracking-[0.35em]'}`}
+            className={`mb-2 w-full text-center text-xs text-amber-300/80 sm:text-sm ${isRtl ? 'font-arabic-display text-base font-medium tracking-normal sm:text-lg' : 'font-body uppercase tracking-[0.35em]'}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -177,7 +178,7 @@ export default function EidAdha3DPage() {
             {t.occasion}
           </motion.p>
           <motion.h1
-            className={`bg-gradient-to-r from-amber-200 via-[#d4af37] to-amber-100 bg-clip-text font-semibold text-transparent ${isRtl ? 'font-arabic-display text-6xl leading-tight sm:text-7xl md:text-8xl' : 'font-display text-4xl tracking-wide sm:text-5xl md:text-6xl lg:text-7xl'}`}
+            className={`w-full text-center bg-gradient-to-r from-amber-200 via-[#d4af37] to-amber-100 bg-clip-text font-semibold text-transparent ${isRtl ? 'font-arabic-display text-6xl leading-tight sm:text-7xl md:text-8xl' : 'font-display text-4xl tracking-wide sm:text-5xl md:text-6xl lg:text-7xl'}`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -185,7 +186,7 @@ export default function EidAdha3DPage() {
             {t.heading}
           </motion.h1>
           <motion.p
-            className={`mx-auto mt-4 max-w-lg text-white/75 ${isRtl ? 'font-arabic-body text-lg leading-[2] sm:text-xl md:text-2xl' : 'font-body text-sm leading-relaxed sm:text-base md:text-lg'}`}
+            className={`mx-auto mt-4 w-full max-w-lg text-center text-white/75 ${isRtl ? 'font-arabic-body text-lg leading-[2] sm:text-xl md:text-2xl' : 'font-body text-sm leading-relaxed sm:text-base md:text-lg'}`}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4 }}
