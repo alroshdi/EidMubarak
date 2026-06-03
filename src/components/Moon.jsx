@@ -35,7 +35,7 @@ export default function Moon({ parallaxX = 0, parallaxY = 0 }) {
       <motion.img
         src="/assets/images/moon.png"
         alt=""
-        className="relative h-20 w-20 object-contain drop-shadow-[0_0_30px_rgba(245,230,168,0.5)] sm:h-28 sm:w-28 md:h-36 md:w-36"
+        className="relative h-20 w-20 bg-transparent object-contain drop-shadow-[0_0_30px_rgba(245,230,168,0.5)] sm:h-28 sm:w-28 md:h-36 md:w-36"
         animate={{ y: [0, -12, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         draggable={false}
