@@ -185,7 +185,7 @@ export default function EidAdha3DPage() {
             {t.heading}
           </motion.h1>
           <motion.p
-            className={`mx-auto mt-4 max-w-lg text-white/75 ${isRtl ? 'font-arabic-body text-lg leading-[2] sm:text-xl md:text-2xl' : 'font-body text-sm leading-relaxed sm:text-base md:text-lg'}`}
+            className={`mx-auto mt-4 w-full max-w-lg text-center text-white/75 ${isRtl ? 'font-arabic-body text-lg leading-[2] sm:text-xl md:text-2xl' : 'font-body text-sm leading-relaxed sm:text-base md:text-lg'}`}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4 }}
@@ -214,7 +214,7 @@ function LangButton({ children, active, onClick, arabic = false }) {
     <motion.button
       type="button"
       onClick={onClick}
-      className={`min-w-[4.5rem] px-4 py-3 text-center text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 focus-visible:ring-inset ${arabic ? 'font-arabic-display text-base' : ''} ${
+      className={`px-4 py-3 text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 focus-visible:ring-inset ${arabic ? 'font-arabic-display text-base' : ''} ${
         active
           ? 'bg-gradient-to-r from-amber-600 to-amber-500 text-[#0a1628]'
           : 'text-amber-100/90 hover:bg-white/10'
