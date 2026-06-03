@@ -1,3 +1,30 @@
+# Eid Al Adha — Eid Mubarak
+
+Cinematic Eid Al Adha landing page (React + Vite).
+
+## Develop
+
+```bash
+npm install
+npm run dev
+```
+
+## Deploy to Vercel
+
+1. Push this repository to GitHub.
+2. Open [alroshdis-projects on Vercel](https://vercel.com/alroshdis-projects) → **Add New…** → **Project**.
+3. Import the `EidMubarak` repo. Vercel detects **Vite** automatically (`vercel.json` sets `npm run build` and `dist`).
+4. Deploy with default settings (no environment variables required).
+
+Or use the CLI (after `npx vercel login`):
+
+```bash
+npm run build
+npx vercel --prod
+```
+
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

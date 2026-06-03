@@ -43,7 +43,7 @@ export default function Sheep3D({ parallaxX = 0, parallaxY = 0, alt = 'Eid Al Ad
           <motion.img
             src="/assets/images/sheep-3d.png"
             alt={alt}
-            className="relative mx-auto w-full max-w-[280px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:max-w-[320px] md:max-w-[380px]"
+            className="relative mx-auto w-full max-w-[280px] bg-transparent object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:max-w-[320px] md:max-w-[380px]"
             draggable={false}
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
