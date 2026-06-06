@@ -46,14 +46,35 @@ export default function HomeHero({ t, isRtl, sheepParallax }) {
         alt={t.sheepAlt}
       />
 
-      <motion.p
-        className={`absolute bottom-6 left-0 right-0 text-center text-xs text-white/40 sm:bottom-8 sm:text-sm ${isRtl ? 'font-arabic-display' : 'font-body'}`}
+      <motion.div
+        className={`absolute bottom-6 left-0 right-0 flex items-center justify-center gap-2 text-xs sm:bottom-8 sm:text-sm ${isRtl ? 'font-arabic-display' : 'font-body'}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.8 }}
       >
-        Done by Hajer Alroshdi
-      </motion.p>
+        <a
+          href="https://alroshdi.github.io/hajersystems/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-2 text-white/40 transition-colors hover:text-amber-200/80"
+          aria-label="Visit Hajer Alroshdi website"
+        >
+          <span>Done by Hajer Alroshdi</span>
+          <svg
+            className="h-4 w-4 shrink-0 opacity-70 transition-opacity group-hover:opacity-100"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+          </svg>
+        </a>
+      </motion.div>
 
       <div
         className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-amber-900/20 to-transparent"
