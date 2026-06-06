@@ -40,3 +40,9 @@ button,
   font-family: var(--font-arabic-body);
   font-feature-settings: 'liga' 1, 'calt' 1;
 }
+
+/* Remove light/white box backgrounds from logo PNG on dark nav */
+.logo-transparent {
+  background: transparent;
+  mix-blend-mode: screen;
+}

@@ -26,18 +26,16 @@ export default function TopNav({
   ]
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#0a1628]/85 shadow-[0_4px_30px_rgba(0,0,0,0.4)] backdrop-blur-xl"
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#0a1628]/85 shadow-[0_4px_30px_rgba(0,0,0,0.4)] backdrop-blur-xl">
       <div
         dir="ltr"
-        className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-3 py-2 sm:gap-4 sm:px-6 sm:py-2.5"
+        className="mx-auto grid max-w-6xl grid-cols-[auto_1fr_auto] items-center gap-2 px-3 py-2 sm:gap-4 sm:px-6 sm:py-2.5"
       >
-        {/* Brand logo — large, transparent PNG */}
+        {/* Brand logo — transparent, no box background */}
         <motion.button
           type="button"
           onClick={() => onNavigate(PAGES.home)}
-          className="cursor-pointer shrink-0 bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628]"
+          className="cursor-pointer justify-self-start bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628]"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
           aria-label={navCopy.home}
@@ -45,17 +43,15 @@ export default function TopNav({
           <img
             src="/assets/images/logo.png"
             alt="Eid Mubarak"
-            className="h-14 w-auto max-w-[200px] object-contain sm:h-16 sm:max-w-[240px] md:h-[4.5rem] md:max-w-[280px]"
+            className="logo-transparent h-14 w-auto max-w-[200px] object-contain sm:h-16 sm:max-w-[240px] md:h-[4.5rem] md:max-w-[280px]"
             draggable={false}
           />
         </motion.button>
 
-        {/* Page links — RTL order in Arabic (الرئيسية → اللعبة → جدار التهاني) */}
+        {/* Page links — centered in both English and Arabic */}
         <nav
           dir={isRtl ? 'rtl' : 'ltr'}
-          className={`flex flex-1 items-center gap-0.5 sm:gap-1 ${
-            isRtl ? 'justify-start font-arabic-display' : 'justify-center'
-          }`}
+          className={`flex items-center justify-center gap-0.5 sm:gap-1 ${isRtl ? 'font-arabic-display' : ''}`}
           aria-label="Main navigation"
         >
           {links.map((link) => {
@@ -86,8 +82,8 @@ export default function TopNav({
           })}
         </nav>
 
-        {/* Audio + language — always visible */}
-        <div className="flex shrink-0 items-center gap-2">
+        {/* Audio + language */}
+        <div className="flex shrink-0 items-center justify-self-end gap-2">
           <motion.button
             type="button"
             onClick={onTogglePlay}
