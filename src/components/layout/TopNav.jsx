@@ -6,7 +6,7 @@ export const PAGES = {
   memory: 'memory',
 }
 
-/** Fixed top navigation — always visible when switching pages */
+/** Fixed top navigation — transparent bar, no link backgrounds */
 export default function TopNav({
   activePage,
   onNavigate,
@@ -26,16 +26,15 @@ export default function TopNav({
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#0a1628]/85 shadow-[0_4px_30px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
       <div
         dir="ltr"
-        className="mx-auto grid max-w-6xl grid-cols-[auto_1fr_auto] items-center gap-2 px-3 py-2 sm:gap-4 sm:px-6 sm:py-2.5"
+        className="mx-auto grid max-w-6xl grid-cols-[auto_1fr_auto] items-center gap-2 px-3 py-2 sm:gap-4 sm:px-6 sm:py-3"
       >
-        {/* Brand logo — transparent, no box background */}
         <motion.button
           type="button"
           onClick={() => onNavigate(PAGES.home)}
-          className="cursor-pointer justify-self-start bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628]"
+          className="cursor-pointer justify-self-start bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
           aria-label={navCopy.home}
@@ -43,15 +42,14 @@ export default function TopNav({
           <img
             src="/assets/images/logo.png"
             alt="Eid Mubarak"
-            className="logo-transparent h-14 w-auto max-w-[200px] object-contain sm:h-16 sm:max-w-[240px] md:h-[4.5rem] md:max-w-[280px]"
+            className="h-16 w-auto max-w-[220px] object-contain sm:h-20 sm:max-w-[280px] md:h-24 md:max-w-[320px]"
             draggable={false}
           />
         </motion.button>
 
-        {/* Page links — centered in both English and Arabic */}
         <nav
           dir={isRtl ? 'rtl' : 'ltr'}
-          className={`flex items-center justify-center gap-0.5 sm:gap-1 ${isRtl ? 'font-arabic-display' : ''}`}
+          className={`flex items-center justify-center gap-1 sm:gap-2 ${isRtl ? 'font-arabic-display' : ''}`}
           aria-label="Main navigation"
         >
           {links.map((link) => {
@@ -61,10 +59,10 @@ export default function TopNav({
                 key={link.id}
                 type="button"
                 onClick={() => onNavigate(link.id)}
-                className={`cursor-pointer relative rounded-lg px-3 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-sm ${
+                className={`cursor-pointer relative bg-transparent px-3 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-sm ${
                   active
-                    ? 'bg-amber-500/20 text-amber-100'
-                    : 'text-white/60 hover:bg-white/5 hover:text-amber-100/90'
+                    ? 'text-amber-200'
+                    : 'text-white/65 hover:text-amber-100/90'
                 }`}
                 whileTap={{ scale: 0.97 }}
                 aria-current={active ? 'page' : undefined}
@@ -82,7 +80,6 @@ export default function TopNav({
           })}
         </nav>
 
-        {/* Audio + language */}
         <div className="flex shrink-0 items-center justify-self-end gap-2">
           <motion.button
             type="button"
@@ -101,7 +98,7 @@ export default function TopNav({
           </motion.button>
 
           <div
-            className="flex overflow-hidden rounded-lg border border-amber-400/40 bg-white/5 backdrop-blur-md"
+            className="flex overflow-hidden rounded-lg border border-amber-400/40 bg-transparent"
             role="group"
             aria-label="Language"
           >
@@ -123,10 +120,10 @@ function LangButton({ children, active, onClick, arabic = false }) {
     <motion.button
       type="button"
       onClick={onClick}
-      className={`cursor-pointer px-3 py-2 text-xs font-semibold sm:text-sm ${arabic ? 'font-arabic-display' : ''} ${
+      className={`cursor-pointer bg-transparent px-3 py-2 text-xs font-semibold sm:text-sm ${arabic ? 'font-arabic-display' : ''} ${
         active
           ? 'bg-gradient-to-r from-amber-600 to-amber-500 text-[#0a1628]'
-          : 'text-amber-100/90 hover:bg-white/10'
+          : 'text-amber-100/90 hover:text-amber-50'
       }`}
       whileTap={{ scale: 0.97 }}
       aria-pressed={active}

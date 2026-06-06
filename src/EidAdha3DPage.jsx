@@ -220,7 +220,7 @@ export default function EidAdha3DPage() {
       />
 
       {/* Page content below nav */}
-      <div className="relative z-10 pt-[4.5rem] sm:pt-[5rem]">
+      <div className="relative z-10 pt-[5.5rem] sm:pt-[6.5rem]">
         <AnimatePresence mode="wait">
           {activePage === PAGES.home && (
             <motion.div key="home" {...pageTransition}>
