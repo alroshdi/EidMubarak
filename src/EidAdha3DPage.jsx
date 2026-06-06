@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import StarGame from './components/game/StarGame'
 import HomeHero from './components/layout/HomeHero'
+import PageControls from './components/layout/PageControls'
 import TopNav, { PAGES } from './components/layout/TopNav'
 import EidMemoryWall from './components/memory/EidMemoryWall'
 import Moon from './components/Moon'
@@ -205,11 +206,7 @@ export default function EidAdha3DPage() {
 
       <audio ref={audioRef} src={TAKBEER_AUDIO} preload="auto" loop />
 
-      {/* Persistent top navigation */}
-      <TopNav
-        activePage={activePage}
-        onNavigate={setActivePage}
-        navCopy={t.nav}
+      <PageControls
         isPlaying={isPlaying}
         onTogglePlay={togglePlay}
         playLabel={t.play}
@@ -219,8 +216,14 @@ export default function EidAdha3DPage() {
         isRtl={isRtl}
       />
 
-      {/* Page content below nav */}
-      <div className="relative z-10 pt-[5.5rem] sm:pt-[6.5rem]">
+      <TopNav
+        activePage={activePage}
+        onNavigate={setActivePage}
+        navCopy={t.nav}
+        isRtl={isRtl}
+      />
+
+      <div className="relative z-10 pt-14 sm:pt-16">
         <AnimatePresence mode="wait">
           {activePage === PAGES.home && (
             <motion.div key="home" {...pageTransition}>
