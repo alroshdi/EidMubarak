@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useScrollDirection } from '../../hooks/useScrollDirection'
 
 export const PAGES = {
   home: 'home',
@@ -6,8 +7,10 @@ export const PAGES = {
   memory: 'memory',
 }
 
-/** Top navigation — centered page links only */
+/** Top navigation — hides on scroll down, reappears on scroll up */
 export default function TopNav({ activePage, onNavigate, navCopy, isRtl }) {
+  const menuVisible = useScrollDirection()
+
   const links = [
     { id: PAGES.home, label: navCopy.home },
     { id: PAGES.game, label: navCopy.game },
@@ -15,7 +18,13 @@ export default function TopNav({ activePage, onNavigate, navCopy, isRtl }) {
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <motion.header
+      className="fixed top-0 left-0 right-0 z-50 bg-transparent"
+      initial={false}
+      animate={{ y: menuVisible ? 0 : '-100%', opacity: menuVisible ? 1 : 0 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      style={{ pointerEvents: menuVisible ? 'auto' : 'none' }}
+    >
       <nav
         dir={isRtl ? 'rtl' : 'ltr'}
         className={`mx-auto flex max-w-6xl items-center justify-center gap-1 px-4 py-3 sm:gap-2 sm:px-6 sm:py-4 ${isRtl ? 'font-arabic-display' : ''}`}
@@ -48,6 +57,6 @@ export default function TopNav({ activePage, onNavigate, navCopy, isRtl }) {
           )
         })}
       </nav>
-    </header>
+    </motion.header>
   )
 }

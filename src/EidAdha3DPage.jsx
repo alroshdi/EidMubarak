@@ -112,6 +112,11 @@ export default function EidAdha3DPage() {
   const [lang, setLang] = useState('ar')
   const [activePage, setActivePage] = useState(PAGES.home)
 
+  const handleNavigate = useCallback((page) => {
+    setActivePage(page)
+    window.scrollTo(0, 0)
+  }, [])
+
   const t = CONTENT[lang]
   const isRtl = lang === 'ar'
 
@@ -218,7 +223,7 @@ export default function EidAdha3DPage() {
 
       <TopNav
         activePage={activePage}
-        onNavigate={setActivePage}
+        onNavigate={handleNavigate}
         navCopy={t.nav}
         isRtl={isRtl}
       />
