@@ -132,28 +132,28 @@ export default function StarGame({ copy, isRtl, fullPage = false }) {
 
   return (
     <section
-      className={`relative mx-auto w-full max-w-4xl px-4 sm:px-6 ${
+      className={`relative mx-auto w-full max-w-4xl px-3 sm:px-6 ${
         fullPage
-          ? 'flex min-h-[calc(100svh-3.75rem)] flex-col justify-center py-8 sm:py-10'
+          ? 'flex min-h-[calc(100svh-5.75rem)] flex-col justify-center py-6 sm:min-h-[calc(100svh-3.75rem)] sm:py-10'
           : 'py-20'
       }`}
       aria-labelledby="star-game-title"
     >
-      <div className={`${GLASS} overflow-hidden p-6 sm:p-8`}>
-        <div className="mb-6 text-center">
+      <div className={`${GLASS} overflow-hidden p-4 sm:p-8`}>
+        <div className="mb-4 text-center sm:mb-6">
           <h2
             id="star-game-title"
-            className={`text-2xl font-semibold text-amber-100 sm:text-3xl ${isRtl ? 'font-arabic-display' : 'font-display'}`}
+            className={`text-xl font-semibold text-amber-100 sm:text-3xl ${isRtl ? 'font-arabic-display' : 'font-display'}`}
           >
             {copy.title}
           </h2>
-          <p className={`mt-2 text-sm text-white/60 ${isRtl ? 'font-arabic-body' : ''}`}>
+          <p className={`mt-2 text-xs text-white/60 sm:text-sm ${isRtl ? 'font-arabic-body' : ''}`}>
             {copy.instructions}
           </p>
         </div>
 
         {/* Score + timer row */}
-        <div className="mb-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+        <div className="mb-4 flex flex-wrap items-center justify-center gap-3 gap-y-2 sm:gap-6">
           <ScorePill label={copy.score} value={score} highlight />
           <TimerPill
             label={copy.time}
@@ -168,7 +168,7 @@ export default function StarGame({ copy, isRtl, fullPage = false }) {
               <motion.span
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="rounded-full border border-amber-400/50 bg-amber-500/20 px-4 py-1.5 text-xs font-semibold text-amber-200 sm:text-sm"
+                className="rounded-full border border-amber-400/50 bg-amber-500/20 px-2.5 py-1 text-[10px] font-semibold text-amber-200 sm:px-4 sm:py-1.5 sm:text-sm"
               >
                 {copy.champion}
               </motion.span>
@@ -191,7 +191,7 @@ export default function StarGame({ copy, isRtl, fullPage = false }) {
 
         {/* Game arena */}
         <div
-          className="relative mx-auto h-[min(52vw,320px)] max-h-[360px] min-h-[260px] w-full overflow-hidden rounded-xl border border-amber-400/15 bg-[#050d18]/60"
+          className="relative mx-auto h-[min(58vw,280px)] max-h-[360px] min-h-[200px] w-full overflow-hidden rounded-xl border border-amber-400/15 bg-[#050d18]/60 sm:h-[min(52vw,320px)] sm:min-h-[260px]"
           style={{
             backgroundImage:
               'radial-gradient(ellipse at center, rgba(212,175,55,0.06) 0%, transparent 70%)',
@@ -248,11 +248,11 @@ export default function StarGame({ copy, isRtl, fullPage = false }) {
           </AnimatePresence>
         </div>
 
-        <div className="mt-6 flex justify-center">
+        <div className="mt-4 flex justify-center sm:mt-6">
           <motion.button
             type="button"
             onClick={handlePlayAgain}
-            className="cursor-pointer rounded-xl border border-amber-400/40 bg-white/5 px-6 py-2.5 text-sm font-medium text-amber-100 hover:bg-white/10"
+            className="cursor-pointer rounded-xl border border-amber-400/40 bg-white/5 px-5 py-2.5 text-sm font-medium text-amber-100 hover:bg-white/10 sm:px-6"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -278,7 +278,7 @@ function ScorePill({ label, value, highlight }) {
       </p>
       <motion.p
         key={value}
-        className={`font-display text-2xl font-semibold sm:text-3xl ${highlight ? 'text-amber-200' : 'text-white/80'}`}
+        className={`font-display text-xl font-semibold sm:text-3xl ${highlight ? 'text-amber-200' : 'text-white/80'}`}
         initial={{ scale: 1.2, opacity: 0.6 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 400, damping: 18 }}
@@ -297,7 +297,7 @@ function TimerPill({ label, display, isLowTime, isFinished, progress }) {
       </p>
       <motion.p
         key={display}
-        className={`font-display text-2xl font-semibold tabular-nums sm:text-3xl ${
+        className={`font-display text-xl font-semibold tabular-nums sm:text-3xl ${
           isFinished
             ? 'text-white/50'
             : isLowTime

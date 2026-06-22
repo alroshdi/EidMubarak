@@ -186,11 +186,11 @@ export default function EidAdha3DPage() {
 
   return (
     <div
-      className="relative min-h-svh w-full overflow-x-hidden bg-gradient-to-b from-[#050d18] via-[#0a1628] to-[#0d1f3c] text-white"
+      className="relative min-h-svh w-full overflow-x-hidden bg-gradient-to-b from-[#050d18] via-[#0a1628] to-[#0d1f3c] pb-[env(safe-area-inset-bottom)] text-white"
       dir={isRtl ? 'rtl' : 'ltr'}
       lang={lang}
     >
-      <div className="pointer-events-none fixed inset-0 z-0">
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div
           className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_80%,rgba(212,175,55,0.08)_0%,transparent_55%)]"
           aria-hidden
@@ -228,7 +228,7 @@ export default function EidAdha3DPage() {
         isRtl={isRtl}
       />
 
-      <div className="relative z-10 pt-14 sm:pt-16">
+      <div className="relative z-10 pt-[5.75rem] sm:pt-16">
         <AnimatePresence mode="wait">
           {activePage === PAGES.home && (
             <motion.div key="home" {...pageTransition}>

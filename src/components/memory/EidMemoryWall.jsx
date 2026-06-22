@@ -40,29 +40,29 @@ export default function EidMemoryWall({ copy, isRtl, fullPage = false }) {
 
   return (
     <section
-      className={`relative mx-auto w-full max-w-6xl px-4 sm:px-6 ${
+      className={`relative mx-auto w-full max-w-6xl px-3 sm:px-6 ${
         fullPage
-          ? 'min-h-[calc(100svh-3.75rem)] py-8 pb-16 sm:py-10'
+          ? 'min-h-[calc(100svh-5.75rem)] py-6 pb-12 sm:min-h-[calc(100svh-3.75rem)] sm:py-10 sm:pb-16'
           : 'py-20 pb-32'
       }`}
       aria-labelledby="memory-wall-title"
     >
-      <div className={`${GLASS} p-6 sm:p-8`}>
-        <div className="mb-8 text-center">
+      <div className={`${GLASS} overflow-hidden p-4 sm:p-8`}>
+        <div className="mb-6 text-center sm:mb-8">
           <h2
             id="memory-wall-title"
-            className={`text-2xl font-semibold text-amber-100 sm:text-3xl ${isRtl ? 'font-arabic-display' : 'font-display'}`}
+            className={`text-xl font-semibold text-amber-100 sm:text-3xl ${isRtl ? 'font-arabic-display' : 'font-display'}`}
           >
             {copy.title}
           </h2>
-          <p className={`mt-2 text-sm text-white/60 ${isRtl ? 'font-arabic-body' : ''}`}>
+          <p className={`mt-2 text-xs text-white/60 sm:text-sm ${isRtl ? 'font-arabic-body' : ''}`}>
             {copy.subtitle}
           </p>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className={`mx-auto mb-10 max-w-xl space-y-4 ${isRtl ? 'font-arabic-body' : ''}`}
+          className={`mx-auto mb-8 max-w-xl space-y-4 sm:mb-10 ${isRtl ? 'font-arabic-body' : ''}`}
         >
           <div>
             <label htmlFor="eid-name" className="mb-1 block text-xs text-amber-300/70">
@@ -133,7 +133,7 @@ export default function EidMemoryWall({ copy, isRtl, fullPage = false }) {
             </p>
           </motion.div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 overflow-hidden sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             <AnimatePresence mode="popLayout">
               {greetings.map((g) => (
                 <MemoryCard

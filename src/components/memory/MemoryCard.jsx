@@ -17,7 +17,7 @@ export default function MemoryCard({ greeting, onDelete, canDelete, copy, isRtl 
   return (
     <motion.article
       layout
-      className="group relative w-full max-w-sm rounded-2xl border border-white/10 bg-white/5 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+      className="memory-card group relative w-full max-w-none rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:max-w-sm sm:p-5"
       style={{ rotate: rotation }}
       initial={{ opacity: 0, y: 24, scale: 0.92 }}
       animate={{
@@ -35,7 +35,7 @@ export default function MemoryCard({ greeting, onDelete, canDelete, copy, isRtl 
     >
       <div className="mb-2 flex items-start justify-between gap-2">
         <h3
-          className={`font-semibold text-amber-200 ${isRtl ? 'font-arabic-display text-lg' : 'font-display text-base'}`}
+          className={`min-w-0 break-words font-semibold text-amber-200 ${isRtl ? 'font-arabic-display text-base sm:text-lg' : 'font-display text-sm sm:text-base'}`}
         >
           {greeting.name}
         </h3>
@@ -52,7 +52,7 @@ export default function MemoryCard({ greeting, onDelete, canDelete, copy, isRtl 
         )}
       </div>
       <p
-        className={`leading-relaxed text-white/80 ${isRtl ? 'font-arabic-body text-base' : 'text-sm'}`}
+        className={`break-words leading-relaxed text-white/80 ${isRtl ? 'font-arabic-body text-sm sm:text-base' : 'text-sm'}`}
       >
         {greeting.message}
       </p>

@@ -19,7 +19,7 @@ export default function TopNav({ activePage, onNavigate, navCopy, isRtl }) {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 bg-transparent"
+      className="fixed top-[3.25rem] right-0 left-0 z-50 bg-[#050d18]/70 backdrop-blur-md sm:top-0 sm:bg-transparent sm:backdrop-blur-none"
       initial={false}
       animate={{ y: menuVisible ? 0 : '-100%', opacity: menuVisible ? 1 : 0 }}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -27,7 +27,7 @@ export default function TopNav({ activePage, onNavigate, navCopy, isRtl }) {
     >
       <nav
         dir={isRtl ? 'rtl' : 'ltr'}
-        className={`mx-auto flex max-w-6xl items-center justify-center gap-1 px-4 py-3 sm:gap-2 sm:px-6 sm:py-4 ${isRtl ? 'font-arabic-display' : ''}`}
+        className={`mx-auto flex max-w-6xl items-center justify-center gap-0.5 px-2 py-2 sm:gap-2 sm:px-6 sm:py-4 ${isRtl ? 'font-arabic-display' : ''}`}
         aria-label="Main navigation"
       >
         {links.map((link) => {
@@ -37,7 +37,7 @@ export default function TopNav({ activePage, onNavigate, navCopy, isRtl }) {
               key={link.id}
               type="button"
               onClick={() => onNavigate(link.id)}
-              className={`cursor-pointer relative bg-transparent px-3 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-sm ${
+              className={`cursor-pointer relative bg-transparent px-2 py-1.5 text-[11px] font-medium transition-colors sm:px-4 sm:py-2 sm:text-sm ${
                 active
                   ? 'text-amber-200'
                   : 'text-white/65 hover:text-amber-100/90'
