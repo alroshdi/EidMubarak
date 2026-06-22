@@ -5,17 +5,17 @@ import Sheep3D from '../Sheep3D'
 export default function HomeHero({ t, isRtl, sheepParallax }) {
   return (
     <main
-      className={`relative flex min-h-[calc(100svh-5.75rem)] flex-col items-center justify-center px-3 py-8 pb-20 sm:min-h-[calc(100svh-3.5rem)] sm:px-6 sm:py-12 sm:pb-12 md:px-8 ${isRtl ? 'font-arabic-body' : ''}`}
+      className={`relative flex h-[calc(100svh-5.75rem)] flex-col overflow-hidden px-3 sm:h-[calc(100svh-4rem)] sm:px-6 md:px-8 ${isRtl ? 'font-arabic-body' : ''}`}
     >
       <motion.header
-        className="mb-6 text-center sm:mb-8"
+        className="shrink-0 pt-1 text-center sm:pt-2"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         key={isRtl ? 'ar' : 'en'}
       >
         <motion.p
-          className={`mb-2 text-[11px] text-amber-300/80 sm:text-sm ${isRtl ? 'font-arabic-display text-sm font-medium tracking-normal sm:text-lg' : 'font-body uppercase tracking-[0.25em] sm:tracking-[0.35em]'}`}
+          className={`mb-1 text-[11px] text-amber-300/80 sm:mb-2 sm:text-sm ${isRtl ? 'font-arabic-display text-sm font-medium tracking-normal sm:text-lg' : 'font-body uppercase tracking-[0.25em] sm:tracking-[0.35em]'}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -23,7 +23,7 @@ export default function HomeHero({ t, isRtl, sheepParallax }) {
           {t.occasion}
         </motion.p>
         <motion.h1
-          className={`bg-gradient-to-r from-amber-200 via-[#d4af37] to-amber-100 bg-clip-text font-semibold text-transparent ${isRtl ? 'font-arabic-display text-[2.75rem] leading-tight sm:text-7xl md:text-8xl' : 'font-display text-3xl tracking-wide sm:text-5xl md:text-6xl lg:text-7xl'}`}
+          className={`bg-gradient-to-r from-amber-200 via-[#d4af37] to-amber-100 bg-clip-text font-semibold text-transparent ${isRtl ? 'font-arabic-display text-[2.25rem] leading-tight sm:text-7xl md:text-8xl' : 'font-display text-3xl tracking-wide sm:text-5xl md:text-6xl lg:text-7xl'}`}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -31,7 +31,7 @@ export default function HomeHero({ t, isRtl, sheepParallax }) {
           {t.heading}
         </motion.h1>
         <motion.p
-          className={`mx-auto mt-3 max-w-lg px-1 text-white/75 sm:mt-4 ${isRtl ? 'font-arabic-body text-base leading-[1.9] sm:text-xl md:text-2xl' : 'font-body text-sm leading-relaxed sm:text-base md:text-lg'}`}
+          className={`mx-auto mt-1 max-w-lg px-1 text-white/75 sm:mt-4 ${isRtl ? 'font-arabic-body text-sm leading-[1.75] sm:text-xl md:text-2xl' : 'font-body text-sm leading-relaxed sm:text-base md:text-lg'}`}
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}
@@ -40,14 +40,17 @@ export default function HomeHero({ t, isRtl, sheepParallax }) {
         </motion.p>
       </motion.header>
 
-      <Sheep3D
-        parallaxX={sheepParallax.x}
-        parallaxY={sheepParallax.y}
-        alt={t.sheepAlt}
-      />
+      <div className="flex min-h-0 flex-1 items-center justify-center">
+        <Sheep3D
+          parallaxX={sheepParallax.x}
+          parallaxY={sheepParallax.y}
+          alt={t.sheepAlt}
+          compact
+        />
+      </div>
 
       <motion.div
-        className={`absolute bottom-4 left-0 right-0 flex items-center justify-center gap-2 px-3 text-center text-[11px] sm:bottom-8 sm:px-0 sm:text-sm ${isRtl ? 'font-arabic-display' : 'font-body'}`}
+        className={`relative z-30 shrink-0 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 text-center text-[11px] sm:pb-3 sm:pt-4 sm:text-sm ${isRtl ? 'font-arabic-display' : 'font-body'}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.8 }}
@@ -56,7 +59,7 @@ export default function HomeHero({ t, isRtl, sheepParallax }) {
           href="https://alroshdi.github.io/hajersystems/"
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex flex-wrap items-center justify-center gap-1.5 text-white/40 transition-colors hover:text-amber-200/80 sm:gap-2"
+          className="group relative z-30 mx-auto flex flex-wrap items-center justify-center gap-1.5 px-3 text-white/40 transition-colors hover:text-amber-200/80 sm:gap-2 sm:px-0"
           aria-label="Visit Hajer Alroshdi website"
         >
           <span>Done by Hajer Alroshdi</span>
@@ -77,7 +80,7 @@ export default function HomeHero({ t, isRtl, sheepParallax }) {
       </motion.div>
 
       <div
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-amber-900/20 to-transparent"
+        className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-amber-900/20 to-transparent sm:h-32"
         aria-hidden
       />
     </main>

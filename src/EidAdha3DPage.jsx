@@ -186,7 +186,11 @@ export default function EidAdha3DPage() {
 
   return (
     <div
-      className="relative min-h-svh w-full overflow-x-hidden bg-gradient-to-b from-[#050d18] via-[#0a1628] to-[#0d1f3c] pb-[env(safe-area-inset-bottom)] text-white"
+      className={`relative w-full overflow-x-hidden bg-gradient-to-b from-[#050d18] via-[#0a1628] to-[#0d1f3c] text-white ${
+        activePage === PAGES.home
+          ? 'h-svh overflow-y-hidden'
+          : 'min-h-svh pb-[env(safe-area-inset-bottom)]'
+      }`}
       dir={isRtl ? 'rtl' : 'ltr'}
       lang={lang}
     >
@@ -231,7 +235,7 @@ export default function EidAdha3DPage() {
       <div className="relative z-10 pt-[5.75rem] sm:pt-16">
         <AnimatePresence mode="wait">
           {activePage === PAGES.home && (
-            <motion.div key="home" {...pageTransition}>
+            <motion.div key="home" className="overflow-hidden" {...pageTransition}>
               <HomeHero t={t} isRtl={isRtl} sheepParallax={sheepParallax} />
             </motion.div>
           )}

@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 
-export default function Sheep3D({ parallaxX = 0, parallaxY = 0, alt = 'Eid Al Adha sheep' }) {
+export default function Sheep3D({ parallaxX = 0, parallaxY = 0, alt = 'Eid Al Adha sheep', compact = false }) {
   return (
     <motion.div
-      className="relative z-20 mx-auto w-full max-w-[240px] sm:max-w-sm md:max-w-md"
+      className={`relative z-20 mx-auto w-full ${compact ? 'max-w-[200px] sm:max-w-sm md:max-w-md' : 'max-w-[240px] sm:max-w-sm md:max-w-md'}`}
       initial={{ opacity: 0, scale: 0.85, y: 60 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -43,7 +43,7 @@ export default function Sheep3D({ parallaxX = 0, parallaxY = 0, alt = 'Eid Al Ad
           <motion.img
             src="/assets/images/sheep-3d.png"
             alt={alt}
-            className="relative mx-auto w-full max-w-[220px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:max-w-[320px] md:max-w-[380px]"
+            className={`relative mx-auto w-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] ${compact ? 'max-h-[32vh] max-w-[180px] sm:max-h-none sm:max-w-[320px] md:max-w-[380px]' : 'max-w-[220px] sm:max-w-[320px] md:max-w-[380px]'}`}
             draggable={false}
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}

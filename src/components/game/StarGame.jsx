@@ -90,13 +90,12 @@ export default function StarGame({ copy, isRtl, fullPage = false }) {
       if (!star || star.collected) return
 
       const now = Date.now()
+      const inCombo = now - lastCollectRef.current < COMBO_WINDOW_MS
       let nextCombo = 1
-      if (now - lastCollectRef.current < COMBO_WINDOW_MS) {
+      if (inCombo) {
         nextCombo = combo + 1
         setComboFlash(true)
         setTimeout(() => setComboFlash(false), 600)
-      } else {
-        nextCombo = 1
       }
       lastCollectRef.current = now
       setCombo(nextCombo)
@@ -104,8 +103,10 @@ export default function StarGame({ copy, isRtl, fullPage = false }) {
       if (comboTimeoutRef.current) clearTimeout(comboTimeoutRef.current)
       comboTimeoutRef.current = setTimeout(() => setCombo(0), COMBO_WINDOW_MS)
 
+      const points = combo >= 3 ? combo : 1
+
       playCollectSound(nextCombo)
-      addScore(nextCombo >= 3 ? 2 : 1)
+      addScore(points)
 
       setParticles((p) => [...p, { id: starId, x: star.x, y: star.y }])
       setStars((prev) =>
